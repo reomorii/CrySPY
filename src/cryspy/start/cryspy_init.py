@@ -133,9 +133,10 @@ def initialize(comm=None, mpi_rank=0, mpi_size=1):
         pkl_data.save_rslt(rslt_data)
 
         # ---------- initialize for each algorithm
+        detail_data = None
         if rin.algo == 'RS':
             from ..RS import rs_init
-            rs_init.initialize(rin)
+            id_queueing = rs_init.initialize(rin)
         elif rin.algo == 'BO':
             from ..BO import bo_init
             bo_init.initialize(rin, init_struc_data, rslt_data)
@@ -144,7 +145,8 @@ def initialize(comm=None, mpi_rank=0, mpi_size=1):
             laqa_init.initialize(rin)
         elif rin.algo in ['EA', 'EA-vc']:
             from ..EA import ea_init
-            ea_init.initialize(rin, init_struc_data, rslt_data)
+            id_queueing,rslt_data,ea_data = ea_init.initialize(rin, init_struc_data, rslt_data)
+            detail_data = ea_data
 
         # ---------- initialize etc
         if rin.kpt_flag:
@@ -162,3 +164,6 @@ def initialize(comm=None, mpi_rank=0, mpi_size=1):
         if rin.stress_step_flag:
             stress_step_data = {}
             pkl_data.save_stress_step(stress_step_data)
+
+    return init_struc_data, opt_struc_data, rin, rslt_data, detail_data, id_queueing
+

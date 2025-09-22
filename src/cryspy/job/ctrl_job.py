@@ -922,7 +922,7 @@ def next_gen_EA(
     # ---------- EA
     backup_cryspy()
     from ..EA import ea_next_gen
-    ea_next_gen.next_gen(
+    init_struc_data, gen, id_queueing, elite_struc, elite_fitness, ea_info, ea_origin, rslt_data = ea_next_gen.next_gen(
         rin,
         gen,
         init_struc_data,
@@ -931,3 +931,7 @@ def next_gen_EA(
         nat_data,
         struc_mol_id,
     )
+
+    ea_data = (gen, elite_struc, elite_fitness, ea_info, ea_origin)
+
+    return init_struc_data, id_queueing, ea_data, rslt_data

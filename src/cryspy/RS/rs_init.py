@@ -14,3 +14,5 @@ def initialize(rin):
     # ---------- save
     pkl_data.save_id_queueing(id_queueing)
     pkl_data.save_id_running(id_running)
+
+    return id_queueing

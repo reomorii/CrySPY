@@ -211,3 +211,13 @@ def next_gen(
     io_stat.set_id(stat, 'id_queueing', id_queueing)
     io_stat.write_stat(stat)
 
+    return (
+        init_struc_data,
+        gen,
+        id_queueing,
+        elite_struc,
+        elite_fitness,
+        ea_info,
+        ea_origin,
+        rslt_data
+    )

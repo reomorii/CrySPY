@@ -145,3 +145,7 @@ def initialize(rin, init_struc_data, rslt_data):
     io_stat.set_common(stat, 'generation', gen)
     io_stat.set_id(stat, 'id_queueing', id_queueing)
     io_stat.write_stat(stat)
+
+    ea_data = (gen, elite_struc, elite_fitness, ea_info, ea_origin)
+
+    return id_queueing, rslt_data, ea_data

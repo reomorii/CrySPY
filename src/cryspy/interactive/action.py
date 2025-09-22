@@ -29,9 +29,13 @@ def initialize():
     # ---------- initialize
     if not os.path.isfile('cryspy.stat'):
         cryspy_init.initialize()
+        init_struc_data, opt_struc_data, rin, rslt_data, detail_data, id_queueing = cryspy_init.initialize()
+
     else:
         logger.error('cryspy.stat file exists. Clean files to start from the beginning.')
     os.remove('lock_cryspy')
+    return init_struc_data, opt_struc_data, rin, rslt_data, detail_data, id_queueing
+
 
 
 def backup():
